@@ -1,158 +1,41 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<head>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <meta charset="UTF-8">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity=
+                    "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
-    <title>@yield('title')</title>
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            @include('layouts.navigation')
 
-    <style>
+            <!-- Page Heading -->
+            @isset($header)
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f1f5f9;
-            color: #1e293b;
-        }
-
-        .container {
-            width: 95%;
-            max-width: 1400px;
-            margin: auto;
-        }
-        .judul{    
-            font-size: 20px;
-            font-weight: bold;
-        }
-        
-        header {
-            background-color: #123c69;
-            color: white;
-            padding: 20px 8%;
-        }
-        
-
-        header h1 {
-            margin-bottom: 5px;
-        }
-
-        header p {
-            color: #dbeafe;
-        }
-
-        main {
-            padding: 30px 0;
-        }
-
-        .card {
-            background: white;
-            padding: 25px 40px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .card h2 {
-            color: #075985;
-            margin-bottom: 15px;
-        }
-
-        .tanpa-titik {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .identitas-card {
-            display: flex;
-            align-items: stretch;
-            height: 400px;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .identitas-text {
-            width: 50%;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .identitas-text h2 {
-            font-size: 32px;
-            margin-bottom: 25px;
-        }
-
-        .identitas-text p {
-            margin-bottom: 12px;
-            font-size: 17px;
-        }
-
-        .identitas-text p strong {
-            display: inline-block;
-            width: 150px;
-        }
-
-        .identitas-image {
-            width: 50%;
-        }
-
-        .identitas-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .footer{
-            background-color: #123c69;
-            color: white;
-            padding: 20px 8%;
-            text-align: center;
-        }
-
-
-    </style>
-
-</head>
-<header>
-
-        <div class="header">
-
-            <div class="judul">
-                POLINEMA PSDKU PAMEKASAN
-            </div>
-
+            <!-- Page Content -->
+            <main>
+                @yield('content')
+            </main>
         </div>
-
-    </header>
-<body>
-
-
-    <main>
-
-        @yield('content')
-
-    </main>
-
-    <footer>
-        <div class="footer">
-            
-        
-        <p>
-            © 2026 {{ $namaKampus ?? 'Kampus Saya' }}
-        </p>
-        </div>
-    </footer>
-
-</body>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity=
+                    "sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    </body>
 </html>

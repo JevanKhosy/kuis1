@@ -41,5 +41,9 @@ class Kampus_PSDKU extends Controller
             'prodi' => $prodi,
             'status' => $status
         ]);
+
+    }
+    public function coba(){
+    return view ('bootstrap.coba');
     }
 }
